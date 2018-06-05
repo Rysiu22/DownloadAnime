@@ -12,13 +12,13 @@ requirements:
 use:
 
 ```
-python do.py <file_with_url_anime.txt>
+python animeout.py <file_with_url_anime.txt>
 ```
 
 or
 
 ```
-python do.py
+python animeout.py
 Put site url: http://...
 ```
 

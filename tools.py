@@ -24,7 +24,7 @@ def getSite(address,debug=False,cookie=None,MovedCount=0):
 
     #conn.set_debuglevel(1)
         
-    conn.request("GET", site.path+"?"+site.query)
+    conn.request("GET", site.path.replace(" ","%20")+"?"+site.query.replace(" ","%20"))
     r1 = conn.getresponse()
     if debug:
         print(r1.status, r1.reason)
@@ -43,16 +43,3 @@ def getSite(address,debug=False,cookie=None,MovedCount=0):
     return data
 
 
-def find_true_url(dane):
-    #didn't finish
-    for ep, site in dane:
-        print(ep)
-        html = getSite(site)
-
-        public = re.findall('"(http[^"]+).*?class="btn"',html)
-        print(public)
-
-        html = getSite(public[0])
-
-        movie = re.findall('var url = "([^"]+)',html)
-        print(movie)
